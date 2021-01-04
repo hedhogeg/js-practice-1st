@@ -1,13 +1,69 @@
 @import "./reset.css";
 
-body {
+.section {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.calendarContainer {
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  width: 100%;
+  height: 80%;
+  top: -72%;
 }
 
-#aside {
-  flex: 1;
+.calendar {
+  background-color: aqua;
+  width: 100%;
+  height: 90%;
 }
 
-#main {
-  flex: 3;
+.calendarBtn {
+  width: 10%;
+  height: 10%;
+  background-color: aqua;
+}
+
+.toDoContainer {
+  width: 100%;
+  height: 100%;
+}
+
+.toDo {
+  background-color: bisque;
+  width: 100%;
+  height: 100%;
+}
+
+.time {
+  width: 30%;
+  height: 20%;
+  background-color: lightpink;
+}
+
+.memoContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  width: 100%;
+  height: 80%;
+  bottom: -72%;
+}
+
+.memo {
+  background-color: chartreuse;
+  width: 100%;
+  height: 90%;
+}
+
+.memoBtn {
+  width: 10%;
+  height: 10%;
+  background-color: chartreuse;
 }
