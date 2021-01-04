@@ -15,6 +15,8 @@
   width: 100%;
   height: 80%;
   top: -72%;
+  transition: 1s ease-in-out;
+  z-index: 1;
 }
 
 .calendar {
@@ -27,6 +29,7 @@
   width: 10%;
   height: 10%;
   background-color: aqua;
+  cursor: pointer;
 }
 
 .toDoContainer {
@@ -38,12 +41,20 @@
   background-color: bisque;
   width: 100%;
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
 }
 
 .time {
   width: 30%;
   height: 20%;
   background-color: lightpink;
+  position: absolute;
+  top: 8%;
+  z-index: 2;
+  transition: 1s ease-in-out;
 }
 
 .memoContainer {
@@ -54,6 +65,8 @@
   width: 100%;
   height: 80%;
   bottom: -72%;
+  transition: 1s ease-in-out;
+  z-index: 1;
 }
 
 .memo {
@@ -66,4 +79,5 @@
   width: 10%;
   height: 10%;
   background-color: chartreuse;
+  cursor: pointer;
 }
