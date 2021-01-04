@@ -13,12 +13,16 @@ function moveCalendar() {
       time.style.transition = `1s ease-in-out`
       time.style.top = `80%`
       calendarBtn.innerText = "Close"
+      calendarCont.style.boxShadow = `0 2px 0 10000px rgba(0,0,0,0.5)`
+      calendarCont.style.backgroundColor = `rgba(0,0,0,0.5)`
       calendarState = true
     }
     else {
       calendarCont.style.top = `-72%`
       time.style.top = `8%`
       calendarBtn.innerText = "calendar"
+      calendarCont.style.boxShadow = `none`
+      calendarCont.style.backgroundColor = `transparent`
       calendarState = false
     }
 }
@@ -29,6 +33,8 @@ function moveMemo() {
       time.style.transition = `0.2s ease-out`
       time.style.transitionDelay = `0.79s`
       time.style.top = 0
+      memoCont.style.boxShadow = `0 2px 0 10000px rgba(0,0,0,0.5)`
+      memoCont.style.backgroundColor = `rgba(0,0,0,0.5)`
       memoState = true
     }
     else {
@@ -36,6 +42,8 @@ function moveMemo() {
       time.style.transitionDelay = 0
       time.style.transition = `0.3s ease-in`
       time.style.top = `8%`
+      memoCont.style.boxShadow = `none`
+      memoCont.style.backgroundColor = `transparent`
       memoState = false
     }
 }
