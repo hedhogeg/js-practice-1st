@@ -2,7 +2,7 @@ const calendarCont = document.querySelector(".calendarContainer")
 const calendarBtn = document.querySelector(".calendarBtn")
 const memoCont = document.querySelector(".memoContainer")
 const memoBtn = document.querySelector(".memoBtn")
-const time = document.querySelector(".time")
+const time = document.querySelector("#timeBack")
 
 let calendarState = false
 let memoState = false
@@ -50,5 +50,9 @@ function moveMemo() {
     }
 }
 
-calendarBtn.addEventListener("click",moveCalendar)
-memoBtn.addEventListener("click",moveMemo)
+function init() {
+  calendarBtn.addEventListener("click",moveCalendar)
+  memoBtn.addEventListener("click",moveMemo)
+}
+
+init()
