@@ -1,4 +1,5 @@
 @import "./reset.css";
+
 * {
   box-sizing: border-box;
 }
@@ -35,7 +36,7 @@
 .calendarBtn {
   width: 10%;
   height: 10%;
-  padding: 10px 0;
+  padding: 1.2% 0;
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
   background-color: aqua;
@@ -222,7 +223,7 @@
 .memoBtn {
   width: 10%;
   height: 10%;
-  padding: 10px 0;
+  padding: 1.2% 0;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
   background-color: chartreuse;
