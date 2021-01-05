@@ -12,8 +12,43 @@
         <div class="calendarBtn">calendar</div>
       </article>
       <article class="main">
-        <div class="time">24:01</div>
-        <div class="toDo"></div>
+        <div id="timeBack">
+          <div class="time">
+            <span class="currentTime"></span>
+            <div class="currentDate">
+              <span class="currentMD"></span>
+              <div class="dateLine"></div>
+              <span class="currentDay"></span>
+            </div>
+          </div>
+        </div>
+        <div class="toDo">
+          <header class="toDoHeader">
+            <div class="toDoHeaderContent">
+              <span>To Do</span>
+            </div>
+            <div class="toDoHeaderContent">
+              <span>Finish</span>
+            </div>
+          </header>
+          <main class="toDoMain">
+            <div class="toDoMainToDo">
+              <ul class="toDoMainList toDoList">
+              </ul>
+            </div>
+            <div class="toDoMainAdd">
+              <div class="toDoMainText"></div>
+              <div class="toDoInputBox">
+                <input type="text" class="toDoInput"/>
+                <div class="toDoInputClickIcon"><img class="toDoInputClick" src="./image/plus.ico"/></div>
+              </div>
+            </div>
+            <div class="toDoMainFinish">
+              <ul class="toDoMainFinishList toDoList">
+              </ul>
+            </div>
+          </main>
+        </div>
       </article>
       <article class="memoContainer">
         <div class="memoBtn">memo</div>
@@ -22,4 +57,6 @@
     </section>
   </body>
   <script src="./slide.js"></script>
+  <script src="./time.js"></script>
+  <script src="./todo.js"></script>
 </html>
