@@ -33,6 +33,7 @@ function moveMemo() {
       time.style.transition = `0.2s ease-out`
       time.style.transitionDelay = `0.79s`
       time.style.top = 0
+      memoBtn.innerText = `Close`
       memoCont.style.boxShadow = `0 2px 0 10000px rgba(0,0,0,0.5)`
       memoCont.style.backgroundColor = `rgba(0,0,0,0.5)`
       memoState = true
@@ -42,6 +43,7 @@ function moveMemo() {
       time.style.transitionDelay = 0
       time.style.transition = `0.3s ease-in`
       time.style.top = `8%`
+      memoBtn.innerText = `memo`
       memoCont.style.boxShadow = `none`
       memoCont.style.backgroundColor = `transparent`
       memoState = false
