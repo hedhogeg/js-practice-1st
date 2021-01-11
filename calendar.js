@@ -16,13 +16,15 @@ function makeBox() {
 function deleteBox() {
   for (let i = 35; i < 42; i++) {
     const box = calendarMain.querySelector(`.box${i}`)
-    calendarMain.removeChild(box)
+    if(box) {
+      calendarMain.removeChild(box)
+    }
   }
 }
 
 function printMonth() {
   const showingFirstDate = new Date(2021, currentMonth - 1, 1)
-  const showingLastDate = new Date(2021, currentMonth - 1, 0)
+  const showingLastDate = new Date(2021, currentMonth, 0)
   const firstDay = showingFirstDate.getDay()
   const lastDate = showingLastDate.getDate()
   for (let i = firstDay; i < firstDay + lastDate; i++) {
@@ -33,7 +35,7 @@ function printMonth() {
 
 function showMonth() {
   const showingFirstDate = new Date(2021, currentMonth - 1, 1)
-  const showingLastDate = new Date(2021, currentMonth - 1, 0)
+  const showingLastDate = new Date(2021, currentMonth, 0)
   const firstDay = showingFirstDate.getDay()
   const lastDate = showingLastDate.getDate()
   if (lastDate == 31 && firstDay == 5) {
@@ -51,7 +53,9 @@ function showMonth() {
     for (let i = 0; i < 42; i++) {
       const dateBox = calendarMain.querySelector(`.box${i}`)
       const dateSpan = dateBox.querySelector("span")
-      dateBox.removeChild(dateSpan)
+      if(dateSpan){
+        dateBox.removeChild(dateSpan)
+      }
     }
   }
   else if (lastDate == 30 && firstDay == 6) {
@@ -59,7 +63,9 @@ function showMonth() {
     for (let i = 0; i < 42; i++) {
       const dateBox = calendarMain.querySelector(`.box${i}`)
       const dateSpan = dateBox.querySelector("span")
-      dateBox.removeChild(dateSpan)
+      if(dateSpan){
+        dateBox.removeChild(dateSpan)
+      }
     }
   }
   else {
@@ -67,7 +73,9 @@ function showMonth() {
     for (let i = 0; i < 35; i++) {
       const dateBox = calendarMain.querySelector(`.box${i}`)
       const dateSpan = dateBox.querySelector("span")
-      dateBox.removeChild(dateSpan)
+      if(dateSpan){
+        dateBox.removeChild(dateSpan)
+      }
     }
   }
   printMonth()

@@ -28,7 +28,7 @@
   padding: 20px;
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
-  background-color: aqua;
+  background-color: lightgoldenrodyellow;
   width: 100%;
   height: 90%;
   display: flex;
@@ -40,7 +40,7 @@
   padding: 1.2% 0;
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
-  background-color: aqua;
+  background-color: lightgoldenrodyellow;
   text-align: center;
   cursor: pointer;
 }
@@ -155,11 +155,21 @@
   height: 100%;
   margin: 0 5%;
   padding: 1%;
+  border: 1% solid black;
   border-radius: 10px;
   display: grid;
   grid-template: repeat(5, 1fr) / repeat(7, 1fr);
   grid-auto-rows: 1fr;
-  background-color: blueviolet;
+  background-color: white;
+}
+
+.calendarMain article {
+  border: 1px solid black;
+  padding: 5%;
+}
+
+.calendarMain article span {
+  font-weight: bold;
 }
 
 .main {
@@ -173,10 +183,8 @@
 
 .toDo {
   width: 90%;
-  height: 84%;
+  height: 100%;
   background-color: bisque;
-  position: absolute;
-  top: 8%;
   border-radius: 20px;
 }
 
