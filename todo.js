@@ -3,147 +3,168 @@ const toDoInputClick = document.querySelector(".toDoInputClick")
 const toDoMainList = document.querySelector(".toDoMainList")
 const toDoMainFinishList = document.querySelector(".toDoMainFinishList")
 
-const toDoLS = "todo"
-const finishLS = "finish"
+const toDoLS = "todo";
+const finishLS = "finish";
 
-let toDos = []
-let finishes = []
+let toDos = [];
+let finished = [];
 
-function saveFinish() {
-  localStorage.setItem(finishLS,JSON.stringify(finishes))
-}
-
-function finishToDo(event) {
-  const finishBtn = event.target
-  const finishThing = finishBtn.parentNode
-  const finishOne = toDos.filter(todo => todo.id == parseInt(finishThing.id))
-  paintFinish(finishOne[0].text)
-  deleteToDo(event)
-}
-
-function deleteToDo(event) {
-  const wannaDel = event.target
-  const deleteThing = wannaDel.parentNode
-  const newToDos = toDos.filter(todo => todo.id !== parseInt(deleteThing.id))
-  toDoMainList.removeChild(deleteThing)
-  toDos = newToDos
-  saveToDo()
+function toDo(event) {
+  event.preventDefault;
+  const btn = event.target;
+  const li = btn.parentNode;
+  const text = li.querySelector("span").innerText;
+  paintToDo(text);
+  deleteFinish(event);
 }
 
 function deleteFinish(event) {
-  const wannaDelFin = event.target
-  const deleteFinThing = wannaDelFin.parentNode
-  const newFinishes = finishes.filter(finish => finish.id !== parseInt(deleteFinThing.id))
-  toDoMainFinishList.removeChild(deleteFinThing)
-  finishes = newFinishes
-  saveFinish()
+  event.preventDefault;
+  const btn = event.target;
+  const li = btn.parentNode;
+  toDoMainFinishList.removeChild(li);
+  const newFinish = finished.filter(function (finished) {
+    return finished.id !== parseInt(li.id);
+  });
+  finished = newFinish;
+  saveFinish();
 }
 
-function saveToDo() {
-  localStorage.setItem(toDoLS,JSON.stringify(toDos))
-}
-
-function paintToDo(text) {
-  const li = document.createElement("li")
-  const span = document.createElement("span")
-  const delBtn = document.createElement("button")
-  delBtn.className = "deleteBtn"
-  delBtn.classList.add("Btn")
-  const finBtn = document.createElement("button")
-  finBtn.className = "finishBtn"
-  finBtn.classList.add("Btn")
-  delBtn.innerText = "❌"
-  finBtn.innerText = "✅"
-  delBtn.addEventListener("click",deleteToDo)
-  finBtn.addEventListener("click",finishToDo)
-  let liID = 0
-  if(toDos.length == 0){
-    liID = 1
-  }
-  else {
-    const LSToDoList = JSON.parse(localStorage.getItem(toDoLS))
-    liID = LSToDoList[LSToDoList.length - 1].id + 1
-  }
-  span.innerText = text
-  li.appendChild(span)
-  li.appendChild(delBtn)
-  li.appendChild(finBtn)
-  li.id = liID
-  toDoMainList.appendChild(li)
-  let toDoObj = {
-    text: text,
-    id: liID
-  }
-  toDos.push(toDoObj)
-  saveToDo()
+function saveFinish() {
+  localStorage.setItem(finishLS, JSON.stringify(finished));
 }
 
 function paintFinish(text) {
-  const li = document.createElement("li")
-  const span = document.createElement("span")
-  const delBtn = document.createElement("button")
-  delBtn.className = "deleteFinBtn"
+  const li = document.createElement("li");
+  const delBtn = document.createElement("button");
+  delBtn.className = "deleteBtn"
   delBtn.classList.add("Btn")
-  delBtn.innerText = "❌"
-  delBtn.addEventListener("click",deleteFinish)
-  let liID = 0
-  if(finishes.length == 0){
-    liID = 1
+  const backBtn = document.createElement("button");
+  backBtn.className = "finishBtn"
+  backBtn.classList.add("Btn")
+  const span = document.createElement("span");
+  let newID = 0;
+  if (finished.length == 0) {
+    newID = 1;
+  } else {
+    const finishLi = JSON.parse(localStorage.getItem(finishLS));
+    newID = finishLi[finishLi.length - 1].id + 1;
   }
-  else {
-    const LSFinishList = JSON.parse(localStorage.getItem(finishLS))
-    liID = LSFinishList[LSFinishList.length - 1].id + 1
-  }
-  span.innerText = text
-  li.appendChild(span)
-  li.appendChild(delBtn)
-  li.id = liID
-  toDoMainFinishList.appendChild(li)
-  let finishObj = {
+  delBtn.innerText = "❌";
+  delBtn.addEventListener("click", deleteFinish);
+  backBtn.innerText = "⏪";
+  backBtn.addEventListener("click", toDo);
+  span.innerText = text;
+  li.appendChild(span);
+  li.appendChild(delBtn);
+  li.appendChild(backBtn);
+  li.id = newID;
+  toDoMainFinishList.appendChild(li);
+  const finishObj = {
     text: text,
-    id: liID
+    id: newID
+  };
+  finished.push(finishObj);
+  saveFinish();
+}
+
+function finish(event) {
+  event.preventDefault;
+  const btn = event.target;
+  const li = btn.parentNode;
+  const text = li.querySelector("span").innerText;
+  paintFinish(text);
+  deleteToDo(event);
+}
+
+function deleteToDo(event) {
+  event.preventDefault;
+  const btn = event.target;
+  const li = btn.parentNode;
+  toDoMainList.removeChild(li);
+  const newToDo = toDos.filter(function (todo) {
+    return todo.id !== parseInt(li.id);
+  });
+  toDos = newToDo;
+  saveToDo();
+}
+
+function saveToDo() {
+  localStorage.setItem(toDoLS, JSON.stringify(toDos));
+}
+
+function paintToDo(text) {
+  const li = document.createElement("li");
+  const delBtn = document.createElement("button");
+  delBtn.className = "deleteBtn"
+  delBtn.classList.add("Btn")
+  const finBtn = document.createElement("button");
+  finBtn.className = "finishBtn"
+  finBtn.classList.add("Btn")
+  const span = document.createElement("span");
+  let newID = 0;
+  if (toDos.length == 0) {
+    newID = 1;
+  } else {
+    const toDoLi = JSON.parse(localStorage.getItem(toDoLS));
+    newID = toDoLi[toDoLi.length - 1].id + 1;
   }
-  finishes.push(finishObj)
-  saveFinish()
+  delBtn.innerText = "❌";
+  delBtn.addEventListener("click", deleteToDo);
+  finBtn.innerText = "✅";
+  finBtn.addEventListener("click", finish);
+  span.innerText = text;
+  li.appendChild(span);
+  li.appendChild(delBtn);
+  li.appendChild(finBtn);
+  li.id = newID;
+  toDoMainList.appendChild(li);
+  const toDoObj = {
+    text: text,
+    id: newID
+  };
+  toDos.push(toDoObj);
+  saveToDo();
 }
 
-function handleSubmit() {
-  const toDoThing = toDoInput.value
-  paintToDo(toDoThing)
-  toDoInput.value = ""
-}
-
-function handleEnter(event) {
-  if(event.keyCode == 13) {
-    handleSubmit()
+function loadFinish() {
+  const finished = localStorage.getItem(finishLS);
+  if (finished != null) {
+    const parsedFinished = JSON.parse(finished);
+    parsedFinished.forEach(function (finished) {
+      paintFinish(finished.text);
+    });
   }
 }
 
 function loadToDo() {
-  const toDo = localStorage.getItem(toDoLS)
-  if(toDo !== null) {
-    let toDoList = JSON.parse(toDo)
-    toDoList.forEach(todo => {
-      paintToDo(todo.text)
-    })
+  const toDo = localStorage.getItem(toDoLS);
+  if (toDo !== null) {
+    const parsedToDos = JSON.parse(toDo);
+    parsedToDos.forEach(function (todo) {
+      paintToDo(todo.text);
+    });
   }
 }
 
-function loadFinish() {
-  const Finish = localStorage.getItem(finishLS)
-  if(Finish !== null) {
-    let FinishList = JSON.parse(Finish)
-    FinishList.forEach(finish => {
-      paintFinish(finish.text)
-    })
+function handleSubmit(event) {
+  event.preventDefault();
+  const toDoValue = toDoInput.value;
+  paintToDo(toDoValue);
+  toDoInput.value = "";
+}
+
+function handleEnter(event) {
+  if(event.keyCode == 13) {
+    handleSubmit(event)
   }
 }
 
 function init() {
-  loadToDo()
-  loadFinish()
+  loadToDo();
+  loadFinish();
   toDoInput.addEventListener("keydown",handleEnter)
   toDoInputClick.addEventListener("click",handleSubmit)
 }
 
-init()
+init();

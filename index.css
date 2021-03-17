@@ -34,6 +34,11 @@
   display: flex;
 }
 
+.slideBtn {
+  font-size: 24px;
+  line-height: 24px;
+}
+
 .calendarBtn {
   width: 10%;
   height: 10%;
@@ -215,7 +220,7 @@
 .currentTime {
   flex: 3;
   text-align: center;
-  font-size: 60px;
+  font-size: 80px;
   font-weight: 900;
 }
 
@@ -227,7 +232,7 @@
   flex-direction: column;
   justify-content: space-around;
   text-align: center;
-  font-size: 25px;
+  font-size: 30px;
   font-weight: bold;
 }
 
@@ -342,6 +347,7 @@
   height: 100%;
   width: 100%;
   text-align: center;
+  font-size: 26px;
   background-color: white;
   border: 2px solid white;
   border-radius: 5px;
