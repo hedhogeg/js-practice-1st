@@ -7,6 +7,7 @@ let writeStatus = true
 
 function handleClick() {
   if(writeStatus) {
+    btn.innerText = "Save"
     const showMemo = document.querySelector(".showMemo")
     const memoCont = showMemo.parentNode
     showMemo.remove()
@@ -17,6 +18,7 @@ function handleClick() {
     writeStatus = false
   }
   else {
+    btn.innerText = "Write"
     const writeMemo = document.querySelector(".writeMemo")
     const memoCont = writeMemo.parentNode
     const currentMemo = writeMemo.value
