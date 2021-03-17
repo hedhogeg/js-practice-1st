@@ -435,11 +435,20 @@
   outline: none;
 }
 
+.saveLoadBtn:hover {
+  border: 2px solid rgba(0,0,0,.4);
+}
+
+.saveLoadBtn:active {
+  transform: translateY(2px);
+}
+
 .showMemo {
   margin-top: 2%;
   height: 85%;
   width: 90%;
   background-color: aquamarine;
+  word-wrap: break-word;
 }
 
 .writeMemo {
